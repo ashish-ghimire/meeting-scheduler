@@ -1,0 +1,27 @@
+<h3> Pending Meetings </h3>
+<div class="container">
+  <table class="table-striped table-bordered" >
+    <thead>
+      <tr>
+        <th>Meeting Title</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Accept </th>
+        <th>Decline</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let meeting of meetings" (click)="viewMeetingStats( meeting )">
+        <!-- The variable todos is defined in the list-todos.component.ts file -->
+        <!-- Display a list of todos -->
+        <td>{{meeting.title}}</td>
+        <td> {{meeting.time| date}} </td>
+        <td> {{meeting.time| date: 'shortTime': 'GMT'}} </td>  <!-- :'GMT' means that meeting.time 's format is in GMT but should be displayed as the user's local time zoen -->
+        <td><button (click)="acceptMeeting(meeting)" class="btn btn-success">Accept</button> </td>
+        <td><button (click)="declineMeeting(meeting)" class="btn btn-warning">Decline</button> </td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,34 @@
+<!-- <p>
+  list-meetings works!
+</p> -->
+<!-- <div class="container">
+  <button (click)="createNewMeeting()" class="btn btn-success">
+    New Meeting
+  </button>
+</div>
+
+<div class="container">
+  <button (click)="viewPendingMeetings()" class="btn btn-success">
+    Pending Meeting
+  </button>
+</div> -->
+
+<div class="container">
+  <h3> All Upcoming Meetings </h3>
+
+  <table class="table-striped table-bordered">
+    <thead>
+      <tr>
+        <th> Meeting Title </th>
+        <th> Date </th>
+        <th> Time </th>
+      </tr>
+
+      <tr *ngFor="let meeting of acceptedMeetings" (click)="viewMeetingStats(meeting)">
+        <td> {{meeting.title}} </td> 
+        <td> {{meeting.time | date}} </td>
+        <td> {{meeting.time | date: 'shortTime'}} </td>
+      </tr>
+    </thead>
+  </table>
+</div>

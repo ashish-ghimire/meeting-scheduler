@@ -1,0 +1,39 @@
+<div class="container">
+  <form (ngSubmit)="!meetingForm.invalid && saveMeeting()" #meetingForm="ngForm">
+    <fieldset class="form-group">
+      <label>Title:</label>
+      <input type="text" name="title" class="form-control" [(ngModel)]="meeting.title" required>
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label>Time:</label>
+      <input type="datetime-local" name="time" class="form-control" [(ngModel)]="meeting.time" required>
+    </fieldset>
+
+    <fieldset>
+      <label>Description:</label>
+      <input type="text" name="description" [(ngModel)]="meeting.description" class="form-control">
+    </fieldset>
+
+    <!-- <p>
+      Add people:
+    </p> -->
+
+    <!-- <input [value]="search1" ngxTypeahead [taList]="allUsernames" (taSelected)="selectedStatic($event)"
+      class="form-control"> -->
+
+
+
+    <!-- <ng-select [items]="allUsernames" placeholder="Add user" appendTo="body" multiple="true">
+    </ng-select> -->
+
+    <ng-select [items]="allUsernames"  placeholder="Invite people:" appendTo="body" multiple="true" searchable="true" name="usernames-of-invitees"
+      [(ngModel)]="meetingInvitees">
+  </ng-select>
+
+
+
+    <button type="submit" class="btn btn-success">Done</button>
+
+  </form>
+</div>

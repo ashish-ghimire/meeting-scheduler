@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+
+    <div class="navbar-brand">meetingScheduler</div>
+
+    <ul class="navbar-nav navbar-collapse">
+      <li *ngIf="authenticationService.isUserLoggedIn()"> <a routerLink='{{username}}/meeting/-1'
+          class="nav-link">Create New Meeting</a></li>
+      <li *ngIf="authenticationService.isUserLoggedIn()"> <a routerLink='{{username}}/meetings'
+          class="nav-link">Accepted Meetings</a></li>
+      <li *ngIf="authenticationService.isUserLoggedIn()"><a routerLink='{{username}}/meetings/pending'
+          class="nav-link">Pending Meetings</a></li>
+    </ul>
+
+    <ul class="navbar-nav navbar-collapse justify-content-end">
+      <li *ngIf="!authenticationService.isUserLoggedIn()"><a routerLink="/register" class="nav-link">Register</a> </li>
+      <li *ngIf="!authenticationService.isUserLoggedIn()"> <a routerLink="/login" class="nav-link">Login </a></li>
+      <li *ngIf="authenticationService.isUserLoggedIn() && !gotWeatherData" class="nav-link" (click)="openModal(mymodal)" >Display Weather </li>
+      <li *ngIf="authenticationService.isUserLoggedIn() && gotWeatherData" class="nav-link"> 
+        <span *ngIf="gotWeatherData">{{temperature}} <img src='http://openweathermap.org/img/w/{{weatherIcon}}.png' alt={{weatherDescription}}> </span>
+      </li>
+      <!-- <li *ngIf="authenticationService.isUserLoggedIn()"><a routerLink="/logout" class="nav-link">Logout </a> </li> -->
+      <li *ngIf="authenticationService.isUserLoggedIn()" class="nav-link" (click)="logout()">Logout </li>
+
+    </ul>
+  </nav>
+</header>
+
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <h6 class="modal-title" id="modal-basic-title">Enter a valid US zip code: </h6>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <fieldset class="form-group form-inline">
+      <input type="text" name="zip" class="form-control" [(ngModel)]="zipCode"/> 
+    </fieldset>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="modal.close('Save click')">Ok</button>
+  </div>
+</ng-template>

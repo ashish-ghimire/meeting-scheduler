@@ -1,0 +1,50 @@
+<div class="container">
+  <h3>{{this.meeting.title}} </h3>
+  
+  <div class="form-group">
+      <p class="form-control">
+        <span class="content-heading"> Date:</span> <span> {{this.meeting.time | date}}</span>
+      </p>
+  </div>
+
+  <div class="form-group">
+    <!-- <p class="form-control">Time: {{this.meeting.time | date: 'shortTime'}}</p> -->
+
+    <p class="form-control">
+      <span class="content-heading">Time:</span> <span> {{this.meeting.time | date: 'shortTime'}}</span>
+    </p>
+
+  </div>
+
+  <div class="form-group">
+    <p class="form-control">
+      <span class="content-heading">Description:</span> <span> {{this.meeting.description}}</span>
+    </p>
+
+    <!-- <p class="form-control">Description: {{this.meeting.description}} </p> -->
+  </div>
+
+  <div class="form-group">
+    <p class="form-control">
+      <span class="content-heading">Accepted: </span> <span class="commalist" *ngFor="let username of usersWhoAcccepted">{{username}}</span>
+    </p>
+
+    <!-- <p class="form-control">Accepted: <span class="commalist" *ngFor="let username of usersWhoAcccepted">{{username}}</span> </p> -->
+  </div>
+
+  <div class="form-group">
+    <p class="form-control">
+      <span class="content-heading">Declined: </span> <span class="commalist" *ngFor="let username of usersWhoDeclined">{{username}}</span>
+    </p>
+
+    <!-- <p class="form-control">Declined: <span class="commalist" *ngFor="let username of usersWhoDeclined">{{username}}</span> </p> -->
+  </div>
+  
+  <div class="form-group">
+    <p class="form-control">
+      <span class="content-heading">Pending: </span> <span class="commalist" *ngFor="let username of usersWhoStalled">{{username}}</span>
+    </p>
+
+  <!-- <p class="form-control">Pending: <span class="commalist" *ngFor="let username of usersWhoStalled">{{username}}</span> </p> -->
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<h1>Login</h1>
+
+<div class="container">
+  <div class="alert alert-warning" *ngIf="invalidLogin">
+    {{invalidLoginMessagePart1}}
+    <a routerLink="/register"> Register </a>
+    {{invalidLoginMessagePart2}}
+  </div>
+
+  <form (ngSubmit)="!loginForm.invalid && login()" #loginForm="ngForm">
+    <fieldset class="form-group">
+      <label>Username: </label>
+      <input type="text" name="username" class="form-control" [(ngModel)]="username" required>
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label>Password: </label>
+      <input type="password" name="password" class="form-control" [(ngModel)]="password" required>
+    </fieldset>
+
+    <button class="btn btn-success" type="submit">Login</button>
+  </form>
+
+</div>

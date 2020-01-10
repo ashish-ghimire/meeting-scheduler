@@ -1,0 +1,11 @@
+.content-heading{
+    font-weight: bold;
+}
+
+  .commalist:after {
+    content: ", ";
+  }
+
+  .commalist:last-child:after {
+    content: "";
+}
